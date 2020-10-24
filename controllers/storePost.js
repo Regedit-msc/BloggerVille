@@ -1,5 +1,6 @@
 const BlogPost = require("../models/BlogPost.js");
 const path = require("path");
+
 module.exports = (req, res) => {
   let image = req.files.image;
   image.mv(
@@ -10,7 +11,8 @@ module.exports = (req, res) => {
         image: "/img/" + image.name,
         userid: req.session.userId,
       });
-      res.redirect("/");
+      console.log("req.body", req.body);
+      res.redirect("/home");
     }
   );
 };
