@@ -3,7 +3,8 @@
   "name": "startbootstrap-clean-blog",
   "version": "5.0.9",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+     "start:dev": "nodemon --watch"
   },
   "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
   "keywords": [
