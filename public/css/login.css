@@ -19,7 +19,8 @@ body {
   -webkit-box-direction: normal;
   flex-direction: column;
   padding: 68px 100px;
-  background-color: #a1b9bf4d;
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1eca1 74%);
 }
 @media (max-width: 991px) {
   .login-section-wrapper {

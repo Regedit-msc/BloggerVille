@@ -14,26 +14,26 @@
                 <% if(loggedIn) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/home"><span style="font-size: x-large;"><i
-                                class="fas fa-home"></i></span></a>
+                                class="fas fa-home"></i></span> Recent Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/posts/new"><span style="font-size:x-large"><i
-                                class="fab fa-blogger-b"></i></span></a>
+                                class="fab fa-blogger-b"></i></span> Create Post</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/logout"><span style="font-size:x-large"><i
-                                class="fas fa-sign-out-alt"></i></span></a>
+                                class="fas fa-sign-out-alt"></i></span> Log-out</a>
                 </li>
                 <% } %>
                 <% if(!loggedIn) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/"><span style="font-size: x-large;"><i
-                                class="fas fa-sign-in-alt"></i></span></a>
+                                class="fas fa-sign-in-alt"></i></span> Log-In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/register"><span style="font-size: x-large;"><i
                                 class="fas fa-user"></i>
-                            ?</span></a>
+                            ?</span> New User</a>
                 </li>
                 <% } %>
             </ul>
