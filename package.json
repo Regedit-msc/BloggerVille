@@ -22,11 +22,11 @@
   "engines":{
 "node": "12.19.0"
 },
-  "license": "MIT",
-  "author": "Regedit-msc",
-  "contributors": [
-    "Efusanya Ayomide"
-  ],
+"license": "MIT",
+"author": "Start Bootstrap",
+"contributors": [
+  "David Miller (http://davidmiller.io/)"
+],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StartBootstrap/startbootstrap-clean-blog.git"
@@ -59,5 +59,5 @@
     "merge-stream": "2.0.0",
     "nodemon": "^2.0.5"
   },
-  "main": "gulpfile.js"
+  "main": "index.js"
 }
