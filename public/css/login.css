@@ -34,9 +34,6 @@ body {
     padding-bottom: 110px;
     min-height: 100vh;
   }
-  body {
-    background: url("");
-  }
 }
 
 .login-wrapper {
