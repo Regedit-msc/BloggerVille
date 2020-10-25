@@ -33,6 +33,7 @@ body {
     padding-top: 20px;
     padding-bottom: 110px;
     min-height: 100vh;
+    background: url("");
     background-color: #ffffff;
     background-image: linear-gradient(315deg, #ffffff 0%, #d7e1eca1 74%);
   }
