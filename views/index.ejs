@@ -24,42 +24,88 @@
   </header>
   <!-- Main Content -->
   <div class="container">
+
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <h1>RECENT POSTS :</h1>
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">RECENT
+          <small>POSTS</small>
+        </h1>
+
+        <!-- Blog Post -->
         <% for (var i = 0; i < blogposts.length; i++) { %>
-        <div class="post-preview">
-          <a href="/post/<%= blogposts[i]._id
-%>">
-            <h2 class="post-title">
-              <%= blogposts[i].title %>
-            </h2>
-            <h3 class="post-subtitle">
-              <%- blogposts[i].body %>
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#"><%= blogposts[i].userid.username %></a>
-            on <%= blogposts[i].datePosted.toDateString() %></p>
+        <div class="card mb-4">
+          <img class="card-img-top" src="img/about-bg.jpg" alt="Card image cap">
+          <div class="card-body">
+            <a style="text-decoration: none;" href="/post/<%= blogposts[i]._id %>">
+              <h2 class="card-title"> <% if (searchOptions.title !== null || searchOptions.title == "" )  { %>
+                <%= blogposts[i].title %>
+                <% } %>
+              </h2>
+              <p class="card-text"><%- blogposts[i].body %></p>
+            </a>
+
+            <a href="/post/<%= blogposts[i]._id %>" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted by
+            <a href="/home"><%= blogposts[i].userid.username %></a>
+            on <%= blogposts[i].datePosted.toDateString() %>
+          </div>
         </div>
-        <hr>
         <% } %>
-        <!-- Pager -->
+        <!-- Blog Post -->
 
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
+
+        <!-- Blog Post -->
+
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="/home">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="/home">Newer &rarr;</a>
+          </li>
+        </ul>
+
       </div>
-    </div>
-  </div>
-
-  <hr>
 
 
-  <%- include('layouts/footer'); -%>
-  <%- include('layouts/scripts'); -%>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
 
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <form class="form-inline my-2 my-lg-0" action="/home" method="GET">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by PostTitle" aria-label="Search"
+                  name="title">
+
+
+
+                <span class="input-group-append">
+                  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i
+                      class="fas fa-search"></i></button>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- /.container -->
+
+        <!-- Footer -->
+
+        <!-- Bootstrap core JavaScript -->
+
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
 </body>
 
 </html>

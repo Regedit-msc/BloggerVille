@@ -5,59 +5,48 @@
 <body>
     <%- include('layouts/loader'); -%>
     <%- include('layouts/navbar'); -%>
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('/img/about-bg.jpg')">
-        <div class="overlay"></div>
-        <div class="container">
+    <main>
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="col-sm-6 login-section-wrapper">
+                    <% if(errors != null && errors.length > 0){ %>
+                    <ul class="list-group"></ul>
+                    <% for (var i = 0; i < errors.length; i++) { %>
+                    <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+                    <% } %>
+                    </ul>
+                    <% } %>
 
-                    <div class="page-heading">
-                        <h1>Register a new account. 👇</h1>
+                    <div class="login-wrapper my-auto">
+                        <h1 class="login-title">Register</h1>
+                        <form action="/users/register" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" placeholder="Username e.g Kolawole"
+                                    id="username" name=username value="<%=
+username %>">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" id="password"
+                                    name=password value="<%=
+password %>">
+                            </div>
+
+                            <button type="submit" class="btn btn-block login-btn">Register</button>
+                            <p class="login-wrapper-footer-text">Don't have an account? <a href="/"
+                                    class="text-reset">Back to login.</a></p>
+                        </form>
+
+
                     </div>
                 </div>
-            </div>
-    </header>
+                <div class="col-sm-6 px-0 d-none d-sm-block">
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <% if(errors != null && errors.length > 0){ %>
-                <ul class="list-group"></ul>
-                <% for (var i = 0; i < errors.length; i++) { %>
-                <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
-                <% } %>
-                </ul>
-                <% } %>
-                <form action="/users/register" method="POST" enctype="multipart/form-data">
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>User Name</label>
-                            <input type="text" class="form-control" placeholder="User Name" id="username" name=username
-                                value="<%=
-username %>">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" id="password"
-                                name=password value="<%=
-password %>">
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" id="sendMessageButton">Register</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    <hr>
+    </main>
     <%- include('layouts/footer'); -%>
     <%- include('layouts/scripts'); -%>
 </body>

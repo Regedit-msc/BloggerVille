@@ -1,11 +1,19 @@
 const BlogPost = require("../models/BlogPost.js");
+
 module.exports = async (req, res) => {
-  const blogposts = await BlogPost.find({}).populate("userid");
-
-  console.log(req.session);
-  res.render("index", {
-    blogposts,
-
-    homePage: true,
-  });
+  let searchOptions = {};
+  let searchTest = "i"; //Regexp
+  if (req.query.title != null && req.query.title !== "") {
+    searchOptions.title = new RegExp(req.query.title, searchTest);
+  }
+  try {
+    const blogposts = await BlogPost.find(searchOptions).populate("userid");
+    res.render("index", {
+      searchOptions: req.query,
+      blogposts: blogposts,
+      homePage: true,
+    });
+  } catch {
+    res.redirect("/home");
+  }
 };
