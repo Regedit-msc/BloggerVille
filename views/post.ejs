@@ -5,8 +5,6 @@
 <body>
   <%- include('layouts/loader'); -%>
   <%- include('layouts/navbar'); -%>
-
-  <!-- Page Header -->
   <header class="masthead" style="background-image: url('<%= blogpost.image %>')">
     <div class="overlay"></div>
     <div class="container">
@@ -14,7 +12,6 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
             <h1><%= blogpost.title %></h1>
-            <h2 class="subheading"></h2>
             <span class="meta">Posted by
               <a href="#"><%= blogpost.userid.username %></a>
               on <%= blogpost.datePosted.toDateString() %></span>
@@ -24,23 +21,128 @@
     </div>
   </header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
 
-          <%- blogpost.body %>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead"> <%- blogpost.body %></p>
+
+
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form method="POST" onsubmit="return doComment(this);">
+              <input type="hidden" name="blogpost_id" value="<%= blogpost._id%>" />
+              <div class="form-group">
+                <input class="form-control" placeholder="Name" name="username" />
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="comment" placeholder="Your comment" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+
+
         </div>
+        <!-- Single Comment -->
+        <% if (blogpost.comments) { %>
+        <% blogpost.comments = blogpost.comments.reverse() %>
+        <% blogpost.comments.forEach( function(comment) { %>
+
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body"><%= comment.username %>
+            <h5 class="mt-0"><%= comment.comment%></h5>
+
+          </div>
+        </div>
+        <%})%>
+        <% } %>
+
+        <script>
+
+          function doComment(form) {
+            $.ajax({
+              url: "/doComment",
+              method: "POST",
+              data: {
+                username: form.username.value, comment: form.comment.value,
+                blogpost_id: form.blogpost_id.value
+              },
+              success: function (response) {
+                alert(response);
+              }
+            })
+            return false;
+          }
+        </script>
+
+        <!-- Single Comment -->
+
+
+        <!-- Comment with nested comments -->
+
+
+
       </div>
-  </article>
 
-  <hr>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <form class="form-inline my-2 my-lg-0" action="/home" method="GET">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by PostTitle" aria-label="Search"
+                  name="title">
 
 
-  <%- include('layouts/footer'); -%>
-  <%- include('layouts/scripts'); -%>
 
+                <span class="input-group-append">
+                  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i
+                      class="fas fa-search"></i></button>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">User post section.</h5>
+          <div class="card-body">
+            You can share this page as a link.I'm working on instantaneous comments but for now please manage this🤲🏽.
+            Once you post a comment you will have to refresh the page to see your comments. That's all about that.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+
+  <%- include('layouts/footer') %>
+  <%- include('layouts/scripts') %>
 </body>
 
 </html>

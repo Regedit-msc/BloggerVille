@@ -1,13 +1,13 @@
 const slides = document.querySelector("#slideshow");
 let time = 3700; //Time before next slide.
-let index = 5; // The index to be increased for a certain condition.
+let index = 1; // The index to be increased for a certain condition.
 const IMAGES = [
-  "img/about-bg.jpg",
-  "img/contact-bg.jpg",
-  "img/home-bg.jpg",
-  "img/img_12.jpg",
-  "img/post-bg.jpg",
-  "img/img_2.jpg",
+  "img/3.jpg",
+  "img/4.jpg",
+  "img/5.jpg",
+  "img/1.jpg",
+  "img/2.jpg",
+  "img/6.jpg",
 ];
 function chgImg() {
   slides.style.backgroundImage = `url(${IMAGES[index]})`;
