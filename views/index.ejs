@@ -12,12 +12,10 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <!-- 
           <div class="site-heading">
-            <h1>Welcome to BloggerVille ! 🥳</h1>
-            <span class="subheading">Blog & Vlog to your heart's content. Share articles of all kinds with the
-              world.</span>
-          </div> -->
+
+            <span class="subheading"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +39,7 @@
           <%  if (blogposts[i].image) { %>
           <img class="card-img-top" src="<%= blogposts[i].image %>" alt="Card image cap">
           <% } else { %>
-          <img class="card-img-top" src="/img/Default.jpg" alt="Card image cap">
+          <img class="card-img-top" src="img/Default.jpg" alt="Card image cap">
           <% } %>
           <div class="card-body">
             <a style="text-decoration: none;color: midnightblue;" href="/post/<%= blogposts[i]._id %>">

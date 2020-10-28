@@ -1,6 +1,6 @@
 const slides = document.querySelector("#slideshow");
 let time = 3700; //Time before next slide.
-let index = 1; // The index to be increased for a certain condition.
+let index = 5; // The index to be increased for a certain condition.
 const IMAGES = [
   "img/3.jpg",
   "img/4.jpg",
