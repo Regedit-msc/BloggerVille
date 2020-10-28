@@ -42,7 +42,8 @@
           <img class="card-img-top" src="/img/Default.jpg" alt="Card image cap">
           <% } %>
           <div class="card-body">
-            <a style="text-decoration: none;color: midnightblue;" href="/post/<%= blogposts[i]._id %>">
+            <a style="text-decoration: none;color: midnightblue;position:relative; max-height: 200px;overflow: hidden;display: list-item;text-overflow: ellipsis; "
+              href="/post/<%= blogposts[i]._id %>">
               <h2 class="card-title"> <% if (searchOptions.title !== null || searchOptions.title == "" )  { %>
                 <%= blogposts[i].title %>
                 <% } %>
