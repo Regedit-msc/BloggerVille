@@ -4,7 +4,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const routes = require('./routes/web.js'); // All the routes live here now
+const routes = require("./routes/web.js"); // All the routes live here now
 const expressSession = require("express-session");
 
 // Start the app
@@ -17,10 +17,7 @@ const flash = require("connect-flash");
 
 app.use(fileUpload());
 
-mongoose.connect(
-  "mongodb+srv://regedit_msc:01cX2mvgZcsv6e56@cluster0.8yeu3.mongodb.net/my_database",
-  { useNewUrlParser: true }
-);
+mongoose.connect("mongodb://localhost/my_database", { useNewUrlParser: true });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -37,7 +34,6 @@ app.listen(port, () => {
 });
 
 app.use("/posts/store", validateMiddleware);
-
 app.use(
   expressSession({
     secret: "keyboard cat",
@@ -53,6 +49,6 @@ app.use("*", (req, res, next) => {
 
 app.use(flash());
 
-app.use('/', routes);
+app.use("/", routes);
 
 app.use((req, res) => res.render("notfound"));
