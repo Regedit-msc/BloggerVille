@@ -26,11 +26,12 @@
                                 class="fas fa-sign-out-alt"></i></span> Log-out</a>
                 </li>
                 <li class="nav-item">
-                    <!-- User Data from post.ejs is needed here.I think the problem is because I'm not actually getting user data from the whole list of users but I dont know how to go about that  -->
-                    <a class="nav-link" href="/user/<%= userProfile._id %>"><span style="font-size:x-large"><i
+
+                    <a class="nav-link" href="/home"><span style="font-size:x-large"><i
                                 class="fas fa-user-ninja"></i></span>Profile</a>
+
                 </li>
-                <% } %>
+                <%}%>
                 <% if(!loggedIn) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/"><span style="font-size: x-large;"><i

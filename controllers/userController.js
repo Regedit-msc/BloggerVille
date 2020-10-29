@@ -2,19 +2,29 @@
 
 const User = require("../models/User");
 
-// Profile page
-const showUser = async (req, res) => {
-  // Query for user by request ID
-  const userProfile = await User.findOne(req.params.id);
+// Get Users and send to navbar
 
-  // Check the ID
-  console.log(req.params.id);
+const getUser = async (req, res) => {
+  // Query the Database for all users
 
-  // Render the singleUser Profile page
-  res.render("profile", {
-    userProfile: userProfile,
-  });
+  const users = await User.find({});
+
+  // Send users to navbar
+
+  res.render("profile", { users: users });
 };
 
-//Export the showUser function to require in routes/web
-module.exports = { showUser };
+// User individual details
+
+const showUser = async (req, res) => {
+  // Query database for particular user based on id
+
+  const user = await User.findById(req.params.id);
+
+  // render the user details on the profile page
+
+  res.render("profile", { user });
+};
+
+//Export the getUser function to require in routes/web
+module.exports = { showUser, getUser };

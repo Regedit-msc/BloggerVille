@@ -4,7 +4,9 @@
 
 <body>
   <%- include('layouts/loader'); -%>
+
   <%- include('layouts/navbar'); -%>
+
 
   <!-- Page Header -->
   <header class="masthead" id="slideshow" style="background-image: url('')">
@@ -56,7 +58,7 @@
           </div>
           <div class="card-footer text-muted">
             Posted by
-            <a href="/home"><%= blogposts[i].userid.username %></a>
+            <a href="/user/<%= blogposts[i].userid._id %>"><%= blogposts[i].userid.username %></a>
             on <%= blogposts[i].datePosted.toDateString() %>
           </div>
         </div>

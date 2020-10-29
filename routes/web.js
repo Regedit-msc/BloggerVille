@@ -28,7 +28,7 @@ const {
 const { userComments } = require("../controllers/commentController");
 
 // userController
-const { showUser } = require("../controllers/userController");
+const { showUser, getUser } = require("../controllers/userController");
 
 // Login Page
 router.get("/", redirectIfAuthenticatedMiddleware, login);
@@ -57,7 +57,7 @@ router.get("/home", home);
 // Login User
 router.post("/users/login", redirectIfAuthenticatedMiddleware, loginUser);
 
-/* Show User Profile Page */
+/* Get all users ,loop through and then show User Profile Page based on userId */
 router.get("/user/:id", showUser);
 
 // LogOut
