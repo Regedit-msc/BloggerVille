@@ -1,22 +1,14 @@
+// Import dependencies
 const express = require("express");
-
-const app = new express();
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-
-const newPostController = require("./controllers/newPost");
-const homeController = require("./controllers/home");
-const storePostController = require("./controllers/storePost");
-const getPostController = require("./controllers/getPost");
-const doCommentController = require("./controllers/userComments");
-const newUserController = require("./controllers/newUser");
-const storeUserController = require("./controllers/storeUser");
-const loginController = require("./controllers/login");
-const loginUserController = require("./controllers/loginUser");
+const routes = require('./routes/web.js'); // All the routes live here now
 const expressSession = require("express-session");
-const logoutController = require("./controllers/logout");
+
+// Start the app
+const app = new express();
 
 const validateMiddleware = require("./middleware/validateMiddleware");
 const authMiddleware = require("./middleware/authMiddleware");
@@ -61,22 +53,6 @@ app.use("*", (req, res, next) => {
 
 app.use(flash());
 
-app.get("/posts/new", authMiddleware, newPostController);
-app.get("/", redirectIfAuthenticatedMiddleware, loginController);
-app.get("/post/:id", getPostController);
-app.post("/doComment", doCommentController);
-app.post("/posts/store", authMiddleware, storePostController);
-app.get("/auth/register", redirectIfAuthenticatedMiddleware, newUserController);
-app.post(
-  "/users/register",
-  redirectIfAuthenticatedMiddleware,
-  storeUserController
-);
-app.get("/home", homeController);
-app.post(
-  "/users/login",
-  redirectIfAuthenticatedMiddleware,
-  loginUserController
-);
-app.get("/auth/logout", logoutController);
+app.use('/', routes);
+
 app.use((req, res) => res.render("notfound"));

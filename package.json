@@ -4,7 +4,7 @@
   "version": "5.0.9",
   "scripts": {
     "start": "node index.js",
-     "start:dev": "nodemon --watch"
+    "start:dev": "nodemon --watch"
   },
   "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
   "keywords": [
@@ -20,14 +20,14 @@
     "url": "https://github.com/StartBootstrap/startbootstrap-clean-blog/issues",
     "email": "feedback@startbootstrap.com"
   },
-  "engines":{
-"node": "12.19.0"
-},
-"license": "MIT",
-"author": "Start Bootstrap",
-"contributors": [
-  "David Miller (http://davidmiller.io/)"
-],
+  "engines": {
+    "node": "12.19.0"
+  },
+  "license": "MIT",
+  "author": "Start Bootstrap",
+  "contributors": [
+    "David Miller (http://davidmiller.io/)"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StartBootstrap/startbootstrap-clean-blog.git"
