@@ -1,6 +1,7 @@
 // Require User Model
 
 const User = require("../models/User");
+const Post = require("../models/BlogPost");
 
 // Get Users and send to navbar
 
@@ -20,10 +21,11 @@ const showUser = async (req, res) => {
   // Query database for particular user based on id
 
   const user = await User.findById(req.params.id);
+  const posts = await Post.find({ userid: req.params.id });
 
   // render the user details on the profile page
 
-  res.render("profile", { user });
+  res.render("profile", { user, posts });
 };
 
 //Export the getUser function to require in routes/web
